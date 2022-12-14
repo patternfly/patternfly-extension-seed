@@ -11,7 +11,7 @@ export const ExtendedButton: React.FunctionComponent<ExtendedButtonProps> = ({
   ...props
 }: ExtendedButtonProps) => {
   const [currentVariantIndex, setCurrentVariantIndex] = React.useState(0);
-
+  const unUsedTest = 'Used for testing';
   const buttonVariants: ButtonProps['variant'][] = [
     'primary',
     'secondary',
