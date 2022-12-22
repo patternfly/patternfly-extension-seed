@@ -28,7 +28,7 @@ jobs:
             packages/*/package.json
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
-          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
+          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json') }}
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
@@ -75,7 +75,7 @@ jobs:
             packages/*/package.json
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
-          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
+          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json') }}
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
@@ -128,7 +128,7 @@ jobs:
             packages/*/package.json
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
-          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
+          key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json') }}
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
@@ -155,6 +155,6 @@ jobs:
         run: yarn build
         if: steps.dist.outputs.cache-hit != 'true'
       - name: Build docs
-        run: yarn build:docs
+        run: yarn docs:build
       - name: A11y tests
-        run: yarn serve:docs & yarn test:a11y
+        run: yarn docs:serve & yarn test:a11y

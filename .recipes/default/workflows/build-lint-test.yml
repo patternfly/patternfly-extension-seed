@@ -154,6 +154,6 @@ jobs:
         run: yarn build
         if: steps.dist.outputs.cache-hit != 'true'
       - name: Build docs
-        run: yarn build:docs
+        run: yarn docs:build
       - name: A11y tests
-        run: yarn serve:docs & yarn test:a11y
+        run: yarn docs:serve & yarn test:a11y
