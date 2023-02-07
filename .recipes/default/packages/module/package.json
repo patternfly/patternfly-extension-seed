@@ -22,9 +22,6 @@
     "url": "{{ tmplr.repo_url }}/issues"
   },
   "homepage": "{{ tmplr.repo_url }}#readme",
-  "release": {
-    "branches": "main"
-  },
   "publishConfig": {
     "access": "public"
   },
