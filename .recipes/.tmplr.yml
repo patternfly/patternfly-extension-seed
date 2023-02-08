@@ -9,8 +9,7 @@ steps:
     from: env.DESCRIPTION
 
   - read: repo_url
-    from: git.remote_url
-
+    from: env.REPO_URL
 
   - copy: .recipes/default/README.md
     to: 'README.md'
