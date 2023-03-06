@@ -10,14 +10,14 @@
     {
       "packagePatterns": ["*"],
       "excludePackagePatterns": [
-        "@patternfly/documentation-framework"
+        "@patternfly/*"
       ],
       "enabled": false
     },
     {
       "datasources": ["npm"],
-      "packageNames": [
-        "@patternfly/documentation-framework"
+      "packagePatterns": [
+        "@patternfly/*"
       ]
     }
   ]
