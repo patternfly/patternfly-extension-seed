@@ -1,4 +1,5 @@
 {
+  "name": "{{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }}-root",
   "private": true,
   "version": "0.0.0",
   "description": "This library provides patternfly extensions",

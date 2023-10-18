@@ -1,4 +1,5 @@
 {
+  "name": "{{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }}",
   "version": "1.0.0",
   "description": "{{ tmplr.extension_description }}",
   "main": "dist/esm/index.js",
