@@ -7,17 +7,17 @@ jobs:
     env:
       GH_PR_NUM: ${{ github.event.number }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
             echo "Checking out PR"
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
@@ -43,17 +43,17 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
             echo "Checking out PR"
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -63,7 +63,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: lint-cache
         name: Load lint cache
         with:
@@ -79,7 +79,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -87,10 +87,10 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -101,7 +101,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
@@ -112,7 +112,7 @@ jobs:
       - name: Build dist
         run: yarn build
         if: steps.dist.outputs.cache-hit != 'true'
-      - name: PF4 Jest Tests
+      - name: PF6 Jest Tests
         run: yarn test --maxWorkers=2
   test_a11y:
     runs-on: ubuntu-latest
@@ -120,7 +120,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -128,10 +128,10 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -142,7 +142,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:

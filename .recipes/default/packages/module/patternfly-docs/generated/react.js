@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutoLinkHeader, Example, Link as PatternflyThemeLink } from '@patternfly/documentation-framework/components';
+import { AutoLinkHeader, Example } from '@patternfly/documentation-framework/components';
 import { ExtendedButton } from "{{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }}";
 const pageData = {
   "id": "{{ tmplr.extension_name }}",
