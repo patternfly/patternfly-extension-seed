@@ -10,14 +10,14 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
             echo "Checking out PR"
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: setup-cache
         name: Cache setup
         with:
@@ -29,10 +29,10 @@ jobs:
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
           key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -40,7 +40,7 @@ jobs:
            node_modules
            **/node_modules
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: lint-cache
         name: Load lint cache
         with:
@@ -56,7 +56,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -64,7 +64,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: setup-cache
         name: Cache setup
         with:
@@ -76,10 +76,10 @@ jobs:
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
           key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -90,7 +90,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
@@ -109,7 +109,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -117,7 +117,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: setup-cache
         name: Cache setup
         with:
@@ -129,10 +129,10 @@ jobs:
             packages/*/patternfly-docs/content/**
             packages/*/patternfly-docs/generated/**
           key: ${{ runner.os }}-setup-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('package.json', 'packages/module/package.json') }}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      - uses: actions/cache@v2
+          node-version: '20'
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
@@ -143,7 +143,7 @@ jobs:
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
