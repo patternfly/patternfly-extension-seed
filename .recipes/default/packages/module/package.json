@@ -29,17 +29,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@patternfly/react-core": "6.0.0-alpha.101"
+    "@patternfly/react-core": "6.0.0-alpha.100"
   },
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@patternfly/documentation-framework": "6.0.0-alpha.81",
-    "@patternfly/patternfly": "6.0.0-alpha.210",
-    "@patternfly/react-table": "6.0.0-alpha.102",
-    "@patternfly/react-code-editor": "6.0.0-alpha.101",
+    "@patternfly/documentation-framework": "6.0.0-alpha.79",
+    "@patternfly/patternfly": "6.0.0-alpha.205",
+    "@patternfly/react-table": "6.0.0-alpha.101",
+    "@patternfly/react-code-editor": "6.0.0-alpha.100",
     "rimraf": "^6.0.1",
     "@patternfly/patternfly-a11y": "^4.3.1",
     "react-monaco-editor": "^0.56.0",
