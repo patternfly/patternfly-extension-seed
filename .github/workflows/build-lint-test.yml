@@ -46,6 +46,9 @@ jobs:
         with:
           path: '.eslintcache'
           key: ${{ runner.os }}-lint-15-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
+      - name: Enable Corepack
+        shell: bash
+        run: corepack enable
       - name: ESLint
         run: yarn lint:js
       - name: MDLint
