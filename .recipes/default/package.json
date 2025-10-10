@@ -10,8 +10,9 @@
   "scripts": {
     "build": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} build",
     "build:docs": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} docs:build",
+    "build:watch": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} build:watch",
     "build:fed:packages": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} build:fed:packages",
-    "start": "yarn build && concurrently --kill-others \"yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} docs:develop\"",
+    "start": "concurrently --kill-others \"yarn build:watch\" \"yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} docs:develop\"",
     "serve:docs": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} docs:serve",
     "clean": "yarn workspace {{ tmplr.npm_scope }}/{{ tmplr.extension_name | kebab-case }} clean",
     "lint:js": "node --max-old-space-size=4096 node_modules/.bin/eslint packages --cache",
